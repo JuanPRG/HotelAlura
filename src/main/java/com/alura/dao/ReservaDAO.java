@@ -15,11 +15,13 @@ public class ReservaDAO {
         this.con = con;
     }
 
+
+    // cambiar railway.tbreservas a tbreservas si se quiere utilizar local host
     public void guardar(Reserva reserva) {
         try {
             PreparedStatement statement;
             statement = con.prepareStatement(
-                    "INSERT INTO TBRESERVAS "
+                    "INSERT INTO railway.tbreservas "
                             + "(fechaentrada, fechasalida, valor, formapago)"
                             + " VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
 
@@ -51,7 +53,7 @@ public class ReservaDAO {
 
         try {
             final PreparedStatement statement = con
-                    .prepareStatement("SELECT idreserva, fechaentrada, fechasalida, valor, formapago FROM tbreservas WHERE idreserva=?");
+                    .prepareStatement("SELECT idreserva, fechaentrada, fechasalida, valor, formapago FROM railway.tbreservas WHERE idreserva=?");
 
             try (statement) {
                 statement.setString(1,textoBusqueda);
@@ -81,7 +83,7 @@ public class ReservaDAO {
     public int modificarReservas(int idReserva, String fechaEntrada, String fechaSalida, int valor, String formaPago) {
         try {
             final PreparedStatement statement = con.prepareStatement(
-                    "UPDATE tbreservas SET "
+                    "UPDATE railway.tbreservas SET "
                             + " fechaentrada = ?,"
                             + " fechasalida = ?,"
                             + " valor = ?,"

@@ -19,7 +19,7 @@ public class HuespedDAO {
         try {
             PreparedStatement statement;
             statement = con.prepareStatement(
-                    "INSERT INTO TBHUESPEDES "
+                    "INSERT INTO railway.tbhuespedes "
                             + "(idreserva, nombre, apellido, fechanacimiento, nacionalidad, telefono)"
                             + " VALUES (?, ?, ?, ?, ? ,?)", Statement.RETURN_GENERATED_KEYS);
 
@@ -54,7 +54,7 @@ public class HuespedDAO {
 
         try {
             final PreparedStatement statement = con
-                    .prepareStatement("SELECT nombre, apellido, fechanacimiento, nacionalidad, telefono, idreserva FROM tbhuespedes WHERE apellido=?");
+                    .prepareStatement("SELECT nombre, apellido, fechanacimiento, nacionalidad, telefono, idreserva FROM railway.tbhuespedes WHERE apellido=?");
 
             try (statement) {
                 statement.setString(1,textoBusqueda);
@@ -85,7 +85,7 @@ public class HuespedDAO {
     public int modificarHuespedes(String nombre,String apellido,String fechaNacimiento, String nacionalidad, int telefono, int idReserva) {
         try {
             final PreparedStatement statement = con.prepareStatement(
-                    "UPDATE tbhuespedes SET "
+                    "UPDATE railway.tbhuespedes SET "
                             + " nombre = ?,"
                             + " apellido = ?,"
                             + " fechanacimiento = ?,"
@@ -113,7 +113,7 @@ public class HuespedDAO {
 
     public int eliminar(Integer id) {
         try {
-            final PreparedStatement statement = con.prepareStatement("DELETE FROM tbhuespedes WHERE idreserva = ?");
+            final PreparedStatement statement = con.prepareStatement("DELETE FROM railway.tbhuespedes WHERE idreserva = ?");
 
             try (statement) {
                 statement.setInt(1, id);

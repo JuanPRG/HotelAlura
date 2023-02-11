@@ -11,9 +11,10 @@ public class ConnectionFactory {
     private DataSource dataSource;
     public ConnectionFactory(){
         var pooledDataSource = new ComboPooledDataSource();
-        pooledDataSource.setJdbcUrl("jdbc:mysql://localhost/hoteldb?useTimeZone=true&serverTimeZone=UTC");
+//        pooledDataSource.setJdbcUrl("jdbc:mysql://localhost/hoteldb?useTimeZone=true&serverTimeZone=UTC");
+        pooledDataSource.setJdbcUrl("jdbc:mysql://root:LSdeYKJOzjg1puaxtACw@containers-us-west-185.railway.app:7437/railway");
         pooledDataSource.setUser("root");
-        pooledDataSource.setPassword("husker666");
+        pooledDataSource.setPassword("LSdeYKJOzjg1puaxtACw");
         pooledDataSource.setMaxPoolSize(10);
 
         this.dataSource = pooledDataSource;
